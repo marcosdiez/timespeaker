@@ -28,9 +28,13 @@ Go to Settings / Security / Device Administrators to set or unset it.
 
 Also, on Android, if the unlock pattern is too small, Android won't
 send a signal to my app.
+
+
 ----------
 
 Sweet Dreams !
+
+This is Free Software: https://github.com/marcosdiez/timespeaker
 
 By marcos AT unitron DOT com DOT br
 2013-10-05
