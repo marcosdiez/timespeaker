@@ -18,10 +18,17 @@ public class MainActivity extends Activity implements
 
 	private static String TAG = "TTS";
 	private TextToSpeech tts;
+    private static final boolean debug_mode = false;
+
+    static void debug(String string){
+        if(debug_mode){
+            Log.d(TAG,string);
+        }
+    }
 
 	@Override
 	protected void onNewIntent(Intent theIntent) {
-		Log.d(TAG, "onNewIntent");
+        debug("onNewIntent");
 		super.onNewIntent(theIntent);
 		sayTime();
 	}
@@ -29,7 +36,7 @@ public class MainActivity extends Activity implements
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		Log.d("TTS", "onCreate");
+        debug("onCreate");
 		super.onCreate(savedInstanceState);
 		tts = new TextToSpeech(this, this);
 
@@ -47,7 +54,7 @@ public class MainActivity extends Activity implements
 
 	@Override
 	public void onDestroy() {
-		Log.d(TAG, "onDestroy");
+        debug("onDestroy");
 		// Don't forget to shutdown tts!
 		if (tts != null) {
 			tts.stop();
@@ -58,11 +65,11 @@ public class MainActivity extends Activity implements
 
 	@Override
 	public void onInit(int status) {
-		Log.d(TAG, "onInit");
+        debug("onInit");
 		if (status == TextToSpeech.SUCCESS) {
 			sayTime();
 		} else {
-			Log.e(TAG, "Initilization Failed!");
+            debug("Initilization Failed!");
 		}
 	}
 
@@ -74,7 +81,7 @@ public class MainActivity extends Activity implements
 	public static class LockScreenReceiver extends DeviceAdminReceiver {
 		void showToast(Context context, String msg) {
 			Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
-			Log.d(TAG, msg);
+            debug(msg);
 		}
 
 		@Override
